@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 def complex_delete(a_dictionary, value):
     tobedel = []
-    if value == None or a_dictionary == None:
+    if value is None or a_dictionary is None:
         return a_dictionary
     for k, v in a_dictionary.items():
         if v == value:

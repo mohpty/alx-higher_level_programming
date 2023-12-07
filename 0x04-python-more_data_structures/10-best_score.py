@@ -5,7 +5,7 @@ def best_score(a_dictionary):
         val = 0
         mx = ""
         for i in arr:
-            if arr[i] > val:
+            if a_dictionary[i] > val:
                 val = a_dictionary[i]
                 mx = i
         return mx

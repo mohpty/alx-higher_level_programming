@@ -1,0 +1,13 @@
+
+---------------------------
+How To Use 0-add_integer.py
+---------------------------
+
+This module defines an integer combining function named ``add_integer(a, b=98)``.
+
+-----
+Usage
+-----
+
+```add_integer(...)``` Returns the addition of two arguments,
+for numbers it's the equivalance of using the ``+`` operator.

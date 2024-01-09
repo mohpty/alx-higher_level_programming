@@ -5,7 +5,10 @@
 
 
 def append_write(filename='', text=''):
-    """function that appends to an existing file, if it doesn't exist it will create it"""
+    """
+    function that appends to an existing file,
+    if it doesn't exist it will create it
+    """
+
     with open(filename, mode='a+', encoding='utf-8') as f:
         return f.write(text)
-

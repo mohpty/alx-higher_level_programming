@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/python3
 """
 a module that provide a function to serialize
 python code to JSON string

@@ -3,14 +3,16 @@
 import json
 import sys
 
+save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
-if __name__ == '__main__':
-    args = sys.argv[1:]
-    with open('add_item.json', 'r+', encoding='utf-8') as f:
-        obj = json.loads(f.readline())
-        for i in args:
-            if i in obj:
-                pass
-            else:
-                obj.append(i)
-        f.write(json.dumps(args))
+
+try:
+    arr = load_from_json_file('add_item.json')
+except:
+    arr = []
+
+for i in sys.argv[1:]:
+    arr.append(i)
+
+save_to_json_file(arr, 'add_item.json')

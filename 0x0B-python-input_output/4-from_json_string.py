@@ -6,9 +6,9 @@ python code to JSON string
 import json
 
 
-def to_json_string(my_obj):
+def from_json_string(my_str):
     """
     convert serialized object to python object
     """
 
-    return json.loads(my_obj)
+    return json.loads(my_str)

@@ -66,33 +66,38 @@ class Rectangle(base.Base):
 
         self.__y = value
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """
         update the args
         using no-keyword argument
         """
-        try:
-            if args[0]:
-                v.isInt('id', args[0])
-                self.id = args[0]
-            if args[1]:
-                v.isInt('width', args[1])
-                v.biggerThanZero('width', args[1])
-                self.width = args[1]
-            if args[2]:
-                v.isInt('height', args[2])
-                v.biggerThanZero('height', args[2])
-                self.height = args[2]
-            if args[3]:
-                v.isInt('x', args[3])
-                v.biggerThanOrEqualZero('x', args[3])
-                self.x = args[3]
-            if args[4]:
-                v.isInt('y', args[4])
-                v.biggerThanOrEqualZero('y', args[4])
-                self.y = args[4]
-        except IndexError:
-            pass
+        if len(args) > 0:
+            try:
+                if args[0]:
+                    v.isInt('id', args[0])
+                    self.id = args[0]
+                if args[1]:
+                    self.width(args[1])
+                if args[2]:
+                    self.height(args[2])
+                if args[3]:
+                    self.x(args[3])
+                if args[4]:
+                    self.y(args[4])
+            except IndexError:
+                pass
+        else:
+            if 'id' in kwargs:
+                v.isInt('id', kwargs['id'])
+                self.id = kwargs['id']
+            if 'height' in kwargs:
+                self.height = kwargs['height']
+            if 'width' in kwargs:
+                self.width = kwargs['width']
+            if 'x' in kwargs:
+                self.x = kwargs['x']
+            if 'y' in kwargs:
+                self.y = kwargs['y']
 
 
     def area(self):

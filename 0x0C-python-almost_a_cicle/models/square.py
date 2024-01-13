@@ -48,5 +48,12 @@ class Square(rect.Rectangle):
             if 'y' in kwargs:
                 self.y = kwargs['y']
 
+    def to_dictionary(self):
+        return {'id': self.id,
+                'size': self.width,
+                'x': self.x,
+                'y': self.y
+                }
+
     def __str__(self):
         return '[Square] ({}) {}/{} - {}'.format(self.id, self.x, self.y, self.height)

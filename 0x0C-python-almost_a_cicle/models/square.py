@@ -18,5 +18,35 @@ class Square(rect.Rectangle):
         self.width = value
         self.height = value
 
+    def update(self, *args, **kwargs):
+        """Updating the attribute values"""
+        if len(args) > 0:
+            try:
+                if args[0]:
+                    v.isInt('id', args[0])
+                    self.id = args[0]
+                if args[1]:
+                    self.width = args[1]
+                    self.height = args[1]
+                if args[2]:
+                    self.x = args[2]
+                if args[3]:
+                    self.y = args[3]
+            except IndexError:
+                pass
+        else:
+            if 'id' in kwargs:
+                self.id = kwargs['id']
+
+            if 'size' in kwargs:
+                self.height = kwargs['size']
+                self.width = kwargs['size']
+
+            if 'x' in kwargs:
+                self.x = kwargs['x']
+
+            if 'y' in kwargs:
+                self.y = kwargs['y']
+
     def __str__(self):
         return '[Square] ({}) {}/{} - {}'.format(self.id, self.x, self.y, self.height)

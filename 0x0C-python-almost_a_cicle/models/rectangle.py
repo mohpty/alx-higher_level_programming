@@ -66,6 +66,35 @@ class Rectangle(base.Base):
 
         self.__y = value
 
+    def update(self, *args):
+        """
+        update the args
+        using no-keyword argument
+        """
+        try:
+            if args[0]:
+                v.isInt('id', args[0])
+                self.id = args[0]
+            if args[1]:
+                v.isInt('width', args[1])
+                v.biggerThanZero('width', args[1])
+                self.width = args[1]
+            if args[2]:
+                v.isInt('height', args[2])
+                v.biggerThanZero('height', args[2])
+                self.height = args[2]
+            if args[3]:
+                v.isInt('x', args[3])
+                v.biggerThanOrEqualZero('x', args[3])
+                self.x = args[3]
+            if args[4]:
+                v.isInt('y', args[4])
+                v.biggerThanOrEqualZero('y', args[4])
+                self.y = args[4]
+        except IndexError:
+            pass
+
+
     def area(self):
         """
         returns the area of the rectangle
@@ -83,3 +112,4 @@ class Rectangle(base.Base):
 
     def __str__(self):
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+

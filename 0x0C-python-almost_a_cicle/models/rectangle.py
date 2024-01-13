@@ -65,3 +65,9 @@ class Rectangle(base.Base):
         v.biggerThanOrEqualZero('y', value)
 
         self.__y = value
+
+    def area(self):
+        """
+        returns the area of the rectangle
+        """
+        return self.height * self.width

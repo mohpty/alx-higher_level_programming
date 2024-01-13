@@ -77,8 +77,9 @@ class Rectangle(base.Base):
         displays the area of the rectangle
         using # symbols
         """
+        print('\n' * self.y,end='')
         for i in range(self.height):
-            print('#' * self.width)
+            print(' ' * self.x, '#' * self.width, sep='')
 
     def __str__(self):
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)

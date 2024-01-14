@@ -73,3 +73,39 @@ class Base:
                 return output
         except FileNotFoundError:
             return output
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        '''Save a list of objects to a csv file'''
+        with open(cls.__name__ + '.csv', 'w') as f:
+            for item in list_objs:
+                if cls.__name__ == 'Rectangle':
+                    f.write('{},{},{},{},{}\n'.format(item.id,item.width,item.height,
+                        item.x, item.y))
+                else:
+                    f.write('{},{},{},{}\n'.format(item.id, item.size,
+                        item.x, item.y))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        '''load list of objects from a csv file'''
+        with open(cls.__name__ + '.csv', 'r', encoding = 'utf-8') as f:
+            output = []
+            lines = f.readlines()
+            for line in lines:
+                obj = {}
+                items = list(map(int, line.split(',')))
+                obj['id'] = items[0]
+
+                if cls.__name__ == 'Rectangle':
+                    obj['width'] = items[1]
+                    obj['height'] = items[2]
+                    obj['x'] = items[3]
+                    obj['y'] = items[4]
+                else:
+                    obj['size'] = items[1]
+                    obj['x'] = items[2]
+                    obj['y'] = items[3]
+
+                output.append(cls.create(**obj))
+            return output

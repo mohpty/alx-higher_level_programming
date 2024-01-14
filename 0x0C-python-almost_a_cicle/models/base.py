@@ -41,3 +41,18 @@ class Base:
 
         with open(filename, 'w') as f:
             json.dump(content, f)
+
+    @classmethod
+    def create(cls, **dictionary):
+        '''
+        Return a class instance with already set attributes
+        '''
+        from models import rectangle
+        from models import square
+        if cls.__name__ == 'Rectangle':
+            x = rectangle.Rectangle(1, 2, 3)
+        else:
+            x = square.Square(1, 2, 3)
+
+        x.update(**dictionary)
+        return x

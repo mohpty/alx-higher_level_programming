@@ -3,16 +3,24 @@
 from . import rectangle as rect
 from . import validation as v
 
+
 class Square(rect.Rectangle):
+    """
+        Subclass of the rectangle,
+        basically a rectangle with the same
+        values for the height and width
+    """
     def __init__(self, size, x=0, y=0, id=None):
         super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
+        """Getter for the size attribute"""
         return self.width
 
     @size.setter
     def size(self, value):
+        """Setter for the size attribute"""
         v.isInt('width', value)
         v.biggerThanZero('width', value)
         self.width = value
@@ -49,6 +57,7 @@ class Square(rect.Rectangle):
                 self.y = kwargs['y']
 
     def to_dictionary(self):
+        """Converts the object to a dictionary"""
         return {'id': self.id,
                 'size': self.width,
                 'x': self.x,
@@ -56,4 +65,8 @@ class Square(rect.Rectangle):
                 }
 
     def __str__(self):
-        return '[Square] ({}) {}/{} - {}'.format(self.id, self.x, self.y, self.height)
+        '''return a readable string of the instance'''
+        return '[Square] ({}) {}/{} - {}'.format(self.id,
+                                                 self.x,
+                                                 self.y,
+                                                 self.height)

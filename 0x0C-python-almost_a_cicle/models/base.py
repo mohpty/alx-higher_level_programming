@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """Contains declaration of class Base"""
 import json
-from . import rectangle
+
+
 class Base:
+    """Parent class"""
     __nb_objects = 0
 
     def __init__(self, id=None):
@@ -26,7 +28,6 @@ class Base:
         if json_string is None or json_string == '':
             return []
         return json.loads(json_string)
-
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -63,7 +64,7 @@ class Base:
         filename = cls.__name__ + '.json'
         output = []
         try:
-            with open(filename, 'r', encoding = 'utf-8') as f:
+            with open(filename, 'r', encoding='utf-8') as f:
                 contents = f.readlines()
                 for line in contents:
                     objstr = cls.from_json_string(line)
@@ -80,16 +81,21 @@ class Base:
         with open(cls.__name__ + '.csv', 'w') as f:
             for item in list_objs:
                 if cls.__name__ == 'Rectangle':
-                    f.write('{},{},{},{},{}\n'.format(item.id,item.width,item.height,
-                        item.x, item.y))
+                    f.write('{},{},{},{},{}\n'.format(item.id,
+                                                      item.width,
+                                                      item.height,
+                                                      item.x,
+                                                      item.y))
                 else:
-                    f.write('{},{},{},{}\n'.format(item.id, item.size,
-                        item.x, item.y))
+                    f.write('{},{},{},{}\n'.format(item.id,
+                                                   item.size,
+                                                   item.x,
+                                                   item.y))
 
     @classmethod
     def load_from_file_csv(cls):
         '''load list of objects from a csv file'''
-        with open(cls.__name__ + '.csv', 'r', encoding = 'utf-8') as f:
+        with open(cls.__name__ + '.csv', 'r', encoding='utf-8') as f:
             output = []
             lines = f.readlines()
             for line in lines:

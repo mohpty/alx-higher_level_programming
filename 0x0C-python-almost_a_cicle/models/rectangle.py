@@ -3,7 +3,10 @@
 from . import base
 from . import validation as v
 
+
 class Rectangle(base.Base):
+    """Subclass of the base"""
+
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
         v.isInt('width', width)
@@ -24,22 +27,32 @@ class Rectangle(base.Base):
 
     @property
     def width(self):
+        '''width attribute getter'''
+
         return self.__width
 
     @property
     def height(self):
+        '''height attribute getter'''
+
         return self.__height
 
     @property
     def x(self):
+        '''x attribute getter'''
+
         return self.__x
 
     @property
     def y(self):
+        '''y attribute getter'''
+
         return self.__y
 
     @width.setter
     def width(self, value):
+        '''width attribute setter'''
+
         v.isInt('width', value)
         v.biggerThanZero('width', value)
 
@@ -47,6 +60,8 @@ class Rectangle(base.Base):
 
     @height.setter
     def height(self, value):
+        '''height attribute setter'''
+
         v.isInt('height', value)
         v.biggerThanZero('height', value)
 
@@ -54,6 +69,8 @@ class Rectangle(base.Base):
 
     @x.setter
     def x(self, value):
+        '''x attribute setter'''
+
         v.isInt('x', value)
         v.biggerThanOrEqualZero('x', value)
 
@@ -61,6 +78,8 @@ class Rectangle(base.Base):
 
     @y.setter
     def y(self, value):
+        '''y attribute setter'''
+
         v.isInt('y', value)
         v.biggerThanOrEqualZero('y', value)
 
@@ -71,6 +90,7 @@ class Rectangle(base.Base):
         update the args
         using no-keyword argument
         """
+
         if len(args) > 0:
             try:
                 if args[0]:
@@ -99,11 +119,11 @@ class Rectangle(base.Base):
             if 'y' in kwargs:
                 self.y = kwargs['y']
 
-
     def area(self):
         """
         returns the area of the rectangle
         """
+
         return self.height * self.width
 
     def display(self):
@@ -111,17 +131,25 @@ class Rectangle(base.Base):
         displays the area of the rectangle
         using # symbols
         """
-        print('\n' * self.y,end='')
+
+        print('\n' * self.y, end='')
         for i in range(self.height):
             print(' ' * self.x, '#' * self.width, sep='')
 
     def to_dictionary(self):
+        '''return attributes as a dictionary'''
+
         return {'id': self.id,
                 'width': self.width,
                 'height': self.height,
                 'x': self.x,
                 'y': self.y
                 }
-    def __str__(self):
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
 
+    def __str__(self):
+        '''return readable string with attributes'''
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                       self.x,
+                                                       self.y,
+                                                       self.width,
+                                                       self.height)

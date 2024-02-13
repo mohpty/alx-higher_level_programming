@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 0x07. Python - Test-driven development
 
 Requirements
@@ -11,3 +12,6 @@ Python Scripts
     Your code should use the pycodestyle (version 2.8.*)
     All your files must be executable
     The length of your files will be tested using wc
+=======
+0x07-python-test_driven_development
+>>>>>>> e6e82de04bed8e2146c58fde70cceee618892714

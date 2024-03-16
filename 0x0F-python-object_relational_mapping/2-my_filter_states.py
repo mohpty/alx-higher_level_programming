@@ -11,7 +11,7 @@ if __name__ == '__main__':
                          password=argv[2],
                          database=argv[3])
     c = db.cursor()
-    c.execute("SELECT * FROM `states` ORDER BY `id`")
+    c.execute("SELECT * FROM `states`\
+            WHERE BINARY `name` = '{}'".format(argv[4]))
     for state in c.fetchall():
-        if state[1] == argv[4]:
-            print(state)
+        print(state)

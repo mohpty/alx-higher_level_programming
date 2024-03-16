@@ -8,8 +8,10 @@ from sys import argv
 
 if __name__ == '__main__':
     db = MySQLdb.connect(user=argv[1],
-                         password=argv[2], db=argv[3])
-    cursor = db.cursor()
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%'")
-    for state in cursor.fetchall():
-        print(state)
+                         password=argv[2],
+                         database=argv[3])
+    c = db.cursor()
+    c.execute("SELECT * FROM `states` ORDER BY `id`")
+    for state in c.fetchall():
+        if state[1][0] == 'N':
+            print(state)

@@ -11,6 +11,11 @@ if __name__ == '__main__':
                          password=argv[2],
                          database=argv[3])
     c = db.cursor()
-    c.execute("SELECT * FROM `cities` ORDER BY `id`")
+    c.execute("""SELECT cities.id, cities.name, states.name
+    FROM cities
+    LEFT JOIN states ON cities.state_id = states.id
+    ORDER BY cities.id ASC""")
     for city in c.fetchall():
         print(city)
+    c.close()
+    db.close()
